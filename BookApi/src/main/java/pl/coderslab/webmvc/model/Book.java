@@ -2,27 +2,29 @@ package pl.coderslab.webmvc.model;
 
 public class Book {
 
-    private Long id;
+    private int id;
     private String isbn;
     private String title;
     private String author;
     private String publisher;
-    private String category;
+    private String type;
 
-    public Book(Long id, String isbn, String title, String author, String publisher, String category) {
+    public Book() {}
+
+    public Book(int id, String isbn, String title, String author, String publisher, String category) {
         this.id = id;
         this.isbn = isbn;
         this.title = title;
         this.author = author;
         this.publisher = publisher;
-        this.category = category;
+        this.type = category;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -58,11 +60,11 @@ public class Book {
         this.publisher = publisher;
     }
 
-    public String getCategory() {
-        return category;
+    public String getType() {
+        return type;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setType(String type) {
+        this.type = type;
     }
 }
