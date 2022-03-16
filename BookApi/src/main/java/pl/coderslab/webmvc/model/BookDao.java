@@ -46,10 +46,10 @@ public class BookDao {
              PreparedStatement insertStm = connection.prepareStatement(CREATE_BOOK_QUERY,
                      PreparedStatement.RETURN_GENERATED_KEYS)) {
             insertStm.setString(1, book.getIsbn());
-            insertStm.setString(1, book.getTitle());
-            insertStm.setString(2, book.getAuthor());
-            insertStm.setString(3, book.getPublisher());
-            insertStm.setString(3, book.getType());
+            insertStm.setString(2, book.getTitle());
+            insertStm.setString(3, book.getAuthor());
+            insertStm.setString(4, book.getPublisher());
+            insertStm.setString(5, book.getType());
             int result = insertStm.executeUpdate();
             if (result != 1) {
                 throw new RuntimeException("Execute update returned " + result);
@@ -109,10 +109,10 @@ public class BookDao {
              PreparedStatement statement = connection.prepareStatement(UPDATE_BOOK_QUERY)) {
             statement.setInt(6, book.getId());
             statement.setString(1, book.getIsbn());
-            statement.setString(1, book.getTitle());
-            statement.setString(2, book.getAuthor());
-            statement.setString(3, book.getPublisher());
-            statement.setString(3, book.getType());
+            statement.setString(2, book.getTitle());
+            statement.setString(3, book.getAuthor());
+            statement.setString(4, book.getPublisher());
+            statement.setString(5, book.getType());
             statement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
