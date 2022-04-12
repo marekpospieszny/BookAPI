@@ -1,7 +1,13 @@
 package pl.coderslab.webmvc.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "books")
 public class Book {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String isbn;
     private String title;
