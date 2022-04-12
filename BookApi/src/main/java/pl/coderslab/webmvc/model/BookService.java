@@ -9,9 +9,9 @@ public interface BookService {
 
     void add(Book book);
 
-    Optional<Book> get(int id);
+    Optional<Book> get(Long id);
 
-    void delete(int id);
+    void delete(Long id);
 
     void update(Book book);
 }

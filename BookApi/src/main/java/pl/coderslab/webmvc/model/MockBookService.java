@@ -10,23 +10,23 @@ import java.util.Optional;
 public class MockBookService implements BookService {
 
     private List<Book> books;
-    private static int nextId = 4;
+    private static Long nextId = 4L;
 
     public MockBookService() {
         books = new ArrayList<>();
-        books.add(new Book(1,"12345","Wiedźmin","Andrzej Sapkowski","Supernova","fantasy"));
-        books.add(new Book(2,"67891","W pustyni i w puszczy","Henryk Sienkiewicz","Idy","story"));
-        books.add(new Book(3, "23456","Harry Potter","J. Rowling","Wydawnictwo","fantasy"));
+        books.add(new Book(1L,"12345","Wiedźmin","Andrzej Sapkowski","Supernova","fantasy"));
+        books.add(new Book(2L,"67891","W pustyni i w puszczy","Henryk Sienkiewicz","Idy","story"));
+        books.add(new Book(3L, "23456","Harry Potter","J. Rowling","Wydawnictwo","fantasy"));
     }
 
     public List<Book> getList() {
         return books;
     }
 
-    public Book getBookById(int id) {
+    public Book getBookById(Long id) {
         List<Book> list = getList();
         for (Book book : list) {
-            if (book.getId() == (id)) {
+            if (book.getId().equals(id)) {
                 return book;
             }
         }
@@ -37,7 +37,7 @@ public class MockBookService implements BookService {
         books.add(book);
     }
 
-    public void deleteBookById(int id) {
+    public void deleteBookById(Long id) {
         List<Book> list = getList();
     }
 
@@ -53,12 +53,12 @@ public class MockBookService implements BookService {
     }
 
     @Override
-    public Optional<Book> get(int id) {
-        return books.stream().filter(item -> item.getId()==(id)).findFirst();
+    public Optional<Book> get(Long id) {
+        return books.stream().filter(item -> item.getId().equals(id)).findFirst();
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         if (get(id).isPresent()) {
             books.remove(this.get(id).get());
         }

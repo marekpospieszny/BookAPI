@@ -27,7 +27,7 @@ public class BookDao {
              ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
                 Book bookToAdd = new Book();
-                bookToAdd.setId(resultSet.getInt("id"));
+                bookToAdd.setId(resultSet.getLong("id"));
                 bookToAdd.setIsbn(resultSet.getString("isbn"));
                 bookToAdd.setTitle(resultSet.getString("title"));
                 bookToAdd.setAuthor(resultSet.getString("author"));
@@ -56,7 +56,7 @@ public class BookDao {
             }
             try (ResultSet generatedKeys = insertStm.getGeneratedKeys()) {
                 if (generatedKeys.first()) {
-                    book.setId(generatedKeys.getInt(1));
+                    book.setId(generatedKeys.getLong(1));
                     return book;
                 } else {
                     throw new RuntimeException("Generated key was not found");
@@ -68,15 +68,15 @@ public class BookDao {
         return null;
     }
 
-    public Book getBookById(Integer bookId) {
+    public Book getBookById(Long bookId) {
         Book book = new Book();
         try (Connection connection = DbUtil.getConnection();
              PreparedStatement statement = connection.prepareStatement(READ_BOOK_QUERY)
         ) {
-            statement.setInt(1, bookId);
+            statement.setLong(1, bookId);
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    book.setId(resultSet.getInt("id"));
+                    book.setId(resultSet.getLong("id"));
                     book.setIsbn(resultSet.getString("isbn"));
                     book.setTitle(resultSet.getString("title"));
                     book.setAuthor(resultSet.getString("author"));
@@ -90,10 +90,10 @@ public class BookDao {
         return book;
     }
 
-    public void delete(Integer bookId) {
+    public void delete(Long bookId) {
         try (Connection connection = DbUtil.getConnection();
              PreparedStatement statement = connection.prepareStatement(DELETE_BOOK_QUERY)) {
-            statement.setInt(1, bookId);
+            statement.setLong(1, bookId);
             statement.executeUpdate();
             boolean deleted = statement.execute();
             if (!deleted) {
@@ -107,7 +107,7 @@ public class BookDao {
     public void update(Book book) {
         try (Connection connection = DbUtil.getConnection();
              PreparedStatement statement = connection.prepareStatement(UPDATE_BOOK_QUERY)) {
-            statement.setInt(6, book.getId());
+            statement.setLong(6, book.getId());
             statement.setString(1, book.getIsbn());
             statement.setString(2, book.getTitle());
             statement.setString(3, book.getAuthor());

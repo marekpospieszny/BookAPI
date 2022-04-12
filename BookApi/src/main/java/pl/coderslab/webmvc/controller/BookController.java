@@ -36,7 +36,7 @@ public class BookController {
 
     @GetMapping("/{id}")
     @ResponseBody
-    public Book getBook(@PathVariable int id) {
+    public Book getBook(@PathVariable Long id) {
         return this.bookService.get(id).orElseThrow(() -> {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, "entity not found"
@@ -45,7 +45,7 @@ public class BookController {
     }
 
     @DeleteMapping("/{id}")
-    public void removeBook(@PathVariable int id) {
+    public void removeBook(@PathVariable Long id) {
         bookService.delete(id);
     }
 
@@ -78,7 +78,7 @@ public class BookController {
 ////    GET /books/{id} wyświetla informacje o książce o podanym id:
 //    @GetMapping("/{id}")
 //    @ResponseBody
-//    public Book getBookById(@PathVariable int id) {
+//    public Book getBookById(@PathVariable Long id) {
 //        return bookDao.getBookById(id);
 //    }
 //
@@ -93,14 +93,14 @@ public class BookController {
 //
 ////    GET /books/edit/{id} przekazywane z widoku menu do widoku edit
 //    @GetMapping("/edit/{id}")
-//    public String editBook(@PathVariable int id, Model model) {
+//    public String editBook(@PathVariable Long id, Model model) {
 //        model.addAttribute("book",bookDao.getBookById(id));
 //        return "edit";
 //    }
 //
 ////    POST /books/edit/{id} nadpisanie zmienionych danych w widoku edit dla wybranego id
 //    @PostMapping("/edit/{id}")
-//    public String editBook(@PathVariable int id, @RequestParam String isbn, @RequestParam String title, @RequestParam String author,
+//    public String editBook(@PathVariable Long id, @RequestParam String isbn, @RequestParam String title, @RequestParam String author,
 //                           @RequestParam String publisher, @RequestParam String type) {
 //        Book book = new Book(id,isbn,title,author,publisher,type);
 //        bookDao.update(book);
@@ -109,7 +109,7 @@ public class BookController {
 //
 ////    GET /books/delete/{id} przekazane z widoku menu id do usunięcia z bazy danych
 //    @GetMapping("/delete/{id}")
-//    public String deleteBook(@PathVariable int id) {
+//    public String deleteBook(@PathVariable Long id) {
 //        bookDao.delete(id);
 //        return "redirect:/books/";
 //    }
