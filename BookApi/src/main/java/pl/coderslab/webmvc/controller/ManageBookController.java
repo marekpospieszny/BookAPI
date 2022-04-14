@@ -1,6 +1,5 @@
 package pl.coderslab.webmvc.controller;
 
-import org.dom4j.rule.Mode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.webmvc.model.Book;
 import pl.coderslab.webmvc.model.BookService;
 
-import javax.naming.Binding;
 import javax.validation.Valid;
 import java.util.List;
 
