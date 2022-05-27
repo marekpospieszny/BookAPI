@@ -38,12 +38,6 @@
   </c:forEach>
 </table>
 
-<%--<ul>--%>
-<%--  <c:forEach items="${booksList}" var="book">--%>
-<%--    <li>${book.id}, ${book.isbn}, ${book.title}, ${book.author}, ${book.publisher}, ${book.type}</li>--%>
-<%--  </c:forEach>--%>
-<%--</ul>--%>
-
 <h2>Add new book:</h2>
 <form method="post" action="/books/">
   <label>ISBN:<input type="text" name="isbn"></label>

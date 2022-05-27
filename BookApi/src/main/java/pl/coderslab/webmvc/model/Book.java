@@ -1,5 +1,7 @@
 package pl.coderslab.webmvc.model;
 
+import org.hibernate.validator.constraints.ISBN;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
@@ -11,6 +13,7 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
+    @ISBN
     private String isbn;
     @NotBlank
     private String title;
@@ -21,7 +24,8 @@ public class Book {
     @NotBlank
     private String type;
 
-    public Book() {}
+    public Book() {
+    }
 
     public Book(Long id, String isbn, String title, String author, String publisher, String type) {
         this.id = id;
