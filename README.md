@@ -1,4 +1,4 @@
-# Workshop2
+# BookAPI
 Workshop scope was to verify and train knowledge gained after Spring and Hibernate classes of Java bootcamp.
 
 **Technology**
